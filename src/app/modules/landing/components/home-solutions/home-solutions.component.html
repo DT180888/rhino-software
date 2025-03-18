@@ -1,0 +1,59 @@
+<section class="relative py-16 md:py-24">
+  <!-- Content container -->
+  <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <!-- Section header -->
+    <div class="mb-16 text-center">
+      <h2 class="mb-4 text-4xl font-bold tracking-tight text-foreground sm:text-5xl">Giải pháp Bảo mật Toàn diện</h2>
+      <p class="mx-auto max-w-2xl text-lg text-muted-foreground/80">
+        Khám phá các giải pháp quản lý truy cập tiên tiến của chúng tôi, được thiết kế để tăng cường bảo mật và tối ưu
+        hóa hoạt động cho doanh nghiệp của bạn.
+      </p>
+    </div>
+
+    <!-- Solutions grid -->
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
+      <!-- Solution card -->
+      <div
+        *ngFor="let solution of solutions"
+        class="group relative rounded-2xl border border-border/5 bg-card/50 p-8 shadow-lg backdrop-blur-sm transition-all hover:bg-card hover:shadow-xl">
+        <!-- Icon -->
+        <div
+          class="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-background">
+          <lucide-icon [name]="solution.icon" class="h-6 w-6"></lucide-icon>
+        </div>
+
+        <!-- Content -->
+        <div>
+          <h3 class="mb-3 text-xl font-semibold text-foreground">{{ solution.title }}</h3>
+          <p class="mb-6 text-muted-foreground/90">{{ solution.description }}</p>
+
+          <!-- Features list -->
+          <ul class="space-y-3">
+            <li *ngFor="let feature of solution.features" class="flex items-center text-sm text-muted-foreground/80">
+              <svg class="mr-2 h-4 w-4 text-primary/90" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              {{ feature }}
+            </li>
+          </ul>
+        </div>
+
+        <!-- Hover effect overlay -->
+        <div
+          class="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-b from-primary/5 to-primary/10 opacity-0 transition-opacity group-hover:opacity-100"></div>
+      </div>
+    </div>
+
+    <!-- CTA Button -->
+    <div class="mt-12 text-center">
+      <a
+        href="/auth/sign-up"
+        class="inline-flex items-center justify-center rounded-full bg-primary px-8 py-3 text-sm font-medium text-primary-foreground shadow-lg transition-all hover:bg-primary/90 hover:shadow-xl">
+        Bắt đầu ngay
+        <svg class="ml-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>

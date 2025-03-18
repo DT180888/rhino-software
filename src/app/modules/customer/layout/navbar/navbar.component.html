@@ -1,0 +1,231 @@
+<nav class="border-b border-border bg-background">
+  <div class="flex h-16 items-center px-4 md:px-6">
+    <!-- Left section -->
+    <div class="flex items-center space-x-4">
+      <h2 class="text-lg font-semibold hidden sm:block text-foreground">Bảng quản lý</h2>
+      <h2 class="text-lg font-semibold sm:hidden text-foreground">Dashboard</h2>
+    </div>
+
+    <!-- Right section -->
+    <div class="ml-auto flex items-center space-x-2 md:space-x-4">
+      <!-- Search - hidden on small screens -->
+      <div class="relative hidden md:block">
+        <svg-icon src="assets/icons/heroicons/outline/magnifying-glass.svg"
+          [svgClass]="'h-4 w-4 absolute left-2.5 top-2.5'"
+          class="text-muted-foreground [&>svg]:fill-none [&>svg]:stroke-current">
+        </svg-icon>
+        <input type="search" placeholder="Tìm kiếm..."
+          class="border-input focus-visible:ring-ring h-9 w-40 lg:w-64 rounded-md border bg-background pl-8 text-sm text-muted-foreground shadow-sm transition-colors placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 disabled:cursor-not-allowed disabled:opacity-50" />
+      </div>
+
+      <!-- Search button on small screens -->
+      <button
+        class="border-input hover:bg-muted hover:text-accent-foreground focus-visible:ring-ring md:hidden inline-flex h-9 w-9 items-center justify-center rounded-md bg-background text-sm font-medium shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50">
+        <svg-icon src="assets/icons/heroicons/outline/magnifying-glass.svg" [svgClass]="'h-5 w-5'"
+          class="text-muted-foreground [&>svg]:fill-none [&>svg]:stroke-current">
+        </svg-icon>
+      </button>
+
+      <!-- Wrap both elements in a single flex container -->
+      <div class="flex items-center">
+        <!-- Icon chuông -->
+        <div class="relative">
+          <button *ngIf="isAuthenticated"
+            class="nav-icon-button relative rounded-full p-1 text-muted-foreground hover:text-primary focus:outline-none"
+            (click)="toggleNotificationsPopover()" tabindex="0" (keyup.enter)="toggleNotificationsPopover()">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+              stroke="currentColor" class="size-6">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0" />
+            </svg>
+            <!-- Badge hiển thị số lượng thông báo chưa đọc -->
+            <span *ngIf="unreadCount > 0"
+              class="absolute top-0 right-0 min-h-[16px] min-w-[16px] flex items-center justify-center rounded-full bg-red-600 text-[10px] font-medium text-white">
+              {{ unreadCount }}
+            </span>
+          </button>
+
+          <!-- Popover Notifications -->
+          <div *ngIf="showNotificationPopover"
+            class="absolute right-0 top-full mt-2 w-80 rounded-md bg-background shadow-lg ring-1 ring-black ring-opacity-5 z-50">
+            <!-- Tiêu đề popover với tabs -->
+            <div class="border-b border-gray-200 dark:border-gray-700">
+              <!-- Tiêu đề popover với tabs -->
+              <div class="relative px-4 py-4 border-b border-gray-200 dark:border-gray-700">
+                <h2 class="text-sm font-semibold text-gray-700 dark:text-gray-100">
+                  Thông báo
+                </h2>
+                <button
+                  class="absolute top-4 right-4 text-gray-400 hover:text-gray-500 dark:text-gray-300 dark:hover:text-gray-200 focus:outline-none"
+                  (click)="toggleNotificationsPopover()" tabindex="0" (keyup.enter)="toggleNotificationsPopover()"
+                  title="Đóng">
+                  <!-- X icon -->
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd"
+                      d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                      clip-rule="evenodd" />
+                  </svg>
+                </button>
+              </div>
+
+              <!-- Tabs -->
+              <div class="flex border-b border-gray-200 dark:border-gray-700">
+                <button class="flex-1 py-2 px-4 text-sm font-medium text-center focus:outline-none"
+                  [ngClass]="{'text-primary border-b-2 border-primary': activeNotificationTab === 'all', 
+                 'text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300': activeNotificationTab !== 'all'}" (click)="setActiveNotificationTab('all')">
+                  Tất cả
+                </button>
+                <button class="flex-1 py-2 px-4 text-sm font-medium text-center focus:outline-none"
+                  [ngClass]="{'text-primary border-b-2 border-primary': activeNotificationTab === 'unread', 
+                 'text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300': activeNotificationTab !== 'unread'}" (click)="setActiveNotificationTab('unread')">
+                  Chưa đọc
+                </button>
+              </div>
+            </div>
+
+            <!-- Danh sách thông báo -->
+            <div class="max-h-64 overflow-y-auto">
+              <div *ngIf="filteredNotifications.length > 0; else noNotification">
+                <div *ngFor="let notification of filteredNotifications" tabindex="0"
+                  class="px-4 py-2 hover:bg-gray-100 border-b border-gray-200 cursor-pointer dark:border-gray-700 dark:hover:bg-gray-700"
+                  [ngClass]="{'bg-blue-50 dark:bg-blue-900/10': !notification.isRead}"
+                  (click)="onNotificationClick(notification)" (keyup.enter)="onNotificationClick(notification)">
+
+                  <!-- Icon based on notification type -->
+                  <div class="flex items-start">
+                    <div class="mr-3 mt-0.5">
+                      <div class="flex h-8 w-8 items-center justify-center rounded-full" [ngClass]="{
+                'bg-yellow-100 dark:bg-yellow-900/30': notification.notificationType === 'SubscriptionExpiringSoon',
+                'bg-red-100 dark:bg-red-900/30': notification.notificationType === 'SubscriptionExpired',
+                'bg-blue-100 dark:bg-blue-900/30': notification.notificationType === 'General'
+              }">
+                        <svg *ngIf="notification.notificationType === 'SubscriptionExpiringSoon'"
+                          class="h-4 w-4 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
+                          <path fill-rule="evenodd"
+                            d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z"
+                            clip-rule="evenodd"></path>
+                        </svg>
+                        <svg *ngIf="notification.notificationType === 'SubscriptionExpired'"
+                          class="h-4 w-4 text-red-500" fill="currentColor" viewBox="0 0 20 20">
+                          <path fill-rule="evenodd"
+                            d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
+                            clip-rule="evenodd"></path>
+                        </svg>
+                        <svg *ngIf="notification.notificationType === 'General'" class="h-4 w-4 text-blue-500"
+                          fill="currentColor" viewBox="0 0 20 20">
+                          <path fill-rule="evenodd"
+                            d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+                            clip-rule="evenodd"></path>
+                        </svg>
+                      </div>
+                    </div>
+                    <div class="flex-1">
+                      <div class="text-sm font-semibold" [ngClass]="{
+                'text-gray-800 dark:text-gray-100': notification.isRead,
+                'text-gray-900 dark:text-white': !notification.isRead
+              }">
+                        {{ notification.title }}
+                      </div>
+                      <div class="text-xs" [ngClass]="{
+                'text-gray-600 dark:text-gray-300': notification.isRead,
+                'text-gray-700 dark:text-gray-200': !notification.isRead
+              }">
+                        {{ notification.message }}
+                      </div>
+                      <div class="text-xs text-gray-500 dark:text-gray-400">
+                        {{ notification.createdDate | date:'short' }}
+                      </div>
+                    </div>
+                    <div *ngIf="!notification.isRead" class="ml-2 h-2 w-2 rounded-full bg-blue-500"></div>
+                  </div>
+                </div>
+              </div>
+              <ng-template #noNotification>
+                <div class="px-4 py-8 text-sm text-center text-gray-500 dark:text-gray-400">
+                  <svg class="w-12 h-12 mx-auto mb-2 text-gray-400 dark:text-gray-500" fill="none" stroke="currentColor"
+                    viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                      d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9">
+                    </path>
+                  </svg>
+                  <p>Không có thông báo {{ activeNotificationTab === 'unread' ? 'chưa đọc' : '' }}</p>
+                </div>
+              </ng-template>
+            </div>
+
+            <!-- Footer -->
+            <div class="border-t border-gray-200 dark:border-gray-700 p-2 text-center">
+              <button class="text-sm text-primary hover:text-primary/80 dark:text-blue-400 dark:hover:text-blue-300">
+                Xem tất cả
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Burger Menu Button (Moved to right) -->
+        <div class="relative">
+          <button (click)="toggleMobileMenu()" aria-label="Toggle menu"
+            class="flex flex-col justify-center items-center w-10 h-10 rounded-md hover:bg-accent transition-all duration-300 group"
+            [class.active]="isMobileMenuOpen">
+            <span
+              class="block w-5 h-0.5 bg-foreground rounded-full transition-all duration-300 mb-1 group-hover:bg-primary"
+              [class.translate-y-1.5]="isMobileMenuOpen" [class.rotate-45]="isMobileMenuOpen">
+            </span>
+            <span
+              class="block w-5 h-0.5 bg-foreground rounded-full transition-all duration-300 mb-1 group-hover:bg-primary"
+              [class.opacity-0]="isMobileMenuOpen">
+            </span>
+            <span class="block w-5 h-0.5 bg-foreground rounded-full transition-all duration-300 group-hover:bg-primary"
+              [class.-translate-y-1.5]="isMobileMenuOpen" [class.-rotate-45]="isMobileMenuOpen">
+            </span>
+          </button>
+
+          <!-- Mobile Menu (anchored to right) -->
+          <div *ngIf="isMobileMenuOpen"
+            class="mobile-menu absolute top-12 right-0 w-64 bg-card rounded-lg shadow-custom border border-border z-50 animate-fade-in-down">
+            <div class="p-4">
+              <div class="space-y-2">
+                <a [routerLink]="['/landing/home']"
+                  class="flex items-center space-x-2 px-3 py-2 rounded-md hover:bg-accent transition-colors hover:bg-muted">
+                  <svg-icon src="assets/icons/heroicons/outline/home.svg" [svgClass]="'h-5 w-5'"
+                    class="text-muted-foreground [&>svg]:fill-none [&>svg]:stroke-current">
+                  </svg-icon>
+                  <span class="text-sm font-medium text-foreground">Trang chủ</span>
+                </a>
+                <a [routerLink]="['/profile']"
+                  class="flex items-center space-x-2 px-3 py-2 rounded-md hover:bg-accent transition-colors hover:bg-muted">
+                  <svg-icon src="assets/icons/heroicons/outline/user.svg" [svgClass]="'h-5 w-5'"
+                    class="text-muted-foreground [&>svg]:fill-none [&>svg]:stroke-current">
+                  </svg-icon>
+                  <span class="text-sm font-medium text-foreground">Hồ sơ</span>
+                </a>
+                <a [routerLink]="['/settings']"
+                  class="flex items-center space-x-2 px-3 py-2 rounded-md hover:bg-accent transition-colors hover:bg-muted">
+                  <svg-icon src="assets/icons/heroicons/outline/cog.svg" [svgClass]="'h-5 w-5'"
+                    class="text-muted-foreground [&>svg]:fill-none [&>svg]:stroke-current">
+                  </svg-icon>
+                  <span class="text-sm font-medium text-foreground">Cài đặt</span>
+                </a>
+                <div class="h-px bg-border my-2"></div>
+                <button *ngIf="isAuthenticated" (click)="logout()" (keyup.enter)="logout()"
+                  class="flex w-full items-center space-x-2 px-3 py-2 rounded-md hover:bg-destructive/10 text-destructive transition-colors cursor-pointer hover:bg-primary/10">
+                  <svg-icon src="assets/icons/heroicons/outline/arrow-left-on-rectangle.svg" [svgClass]="'h-5 w-5'"
+                    class="text-destructive [&>svg]:fill-none [&>svg]:stroke-current">
+                  </svg-icon>
+                  <span class="text-sm font-medium">Đăng xuất</span>
+                </button>
+                <a *ngIf="!isAuthenticated" [routerLink]="['/auth/sign-in']"
+                  class="flex items-center space-x-2 px-3 py-2 rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition-colors">
+                  <svg-icon src="assets/icons/heroicons/outline/arrow-right-on-rectangle.svg" [svgClass]="'h-5 w-5'"
+                    class="text-primary-foreground [&>svg]:fill-none [&>svg]:stroke-current">
+                  </svg-icon>
+                  <span class="text-sm font-medium">Đăng nhập</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

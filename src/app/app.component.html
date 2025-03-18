@@ -1,1 +1,6 @@
-<router-outlet></router-outlet>
+<div>
+  <router-outlet></router-outlet>
+  <app-responsive-helper></app-responsive-helper>
+  <tui-portal-host></tui-portal-host>
+  <ngx-sonner-toaster [theme]="themeService.isDark ? 'dark' : 'light'"/>
+</div>

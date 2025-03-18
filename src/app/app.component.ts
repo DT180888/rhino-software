@@ -1,13 +1,18 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { ThemeService } from './core/services/theme.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  standalone: true,
-  imports: [RouterOutlet]
+  template: `
+    <tui-root>
+      <router-outlet></router-outlet>
+    </tui-root>
+  `
 })
 export class AppComponent {
-  title = 'rhino_software';
+  title = 'Angular Tailwind';
+
+  constructor(public themeService: ThemeService) { }
 }

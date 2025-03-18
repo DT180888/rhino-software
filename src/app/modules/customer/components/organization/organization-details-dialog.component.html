@@ -1,0 +1,83 @@
+<!-- organization-details-dialog.component.html -->
+<div class="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
+  <div class="w-full max-w-2xl rounded-lg bg-background p-6 shadow-lg">
+    <!-- Dialog Header -->
+    <div class="mb-6 flex items-center justify-between">
+      <h2 class="text-xl font-semibold text-foreground">Thông tin chi tiết tổ chức</h2>
+      <button
+        class="rounded-full p-1 text-muted-foreground hover:bg-muted hover:text-foreground"
+        (click)="closeDialog()">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Organization Details -->
+    <div class="space-y-4">
+      <div class="grid grid-cols-2 gap-4">
+        <div>
+          <p class="text-sm text-muted-foreground">Tên tổ chức</p>
+          <p class="font-medium text-foreground">{{ organization.organizationName }}</p>
+        </div>
+      </div>
+
+      <div>
+        <p class="text-sm text-muted-foreground">Địa chỉ</p>
+        <p class="font-medium text-foreground">{{ organization.address }}</p>
+      </div>
+
+      <div class="grid grid-cols-2 gap-4">
+        <div>
+          <p class="text-sm text-muted-foreground">Email</p>
+          <p class="font-medium text-foreground">{{ organization.email }}</p>
+        </div>
+        <div>
+          <p class="text-sm text-muted-foreground">Số điện thoại</p>
+          <p class="font-medium text-foreground">{{ organization.phoneNumber }}</p>
+        </div>
+      </div>
+
+      <div>
+        <p class="text-sm text-muted-foreground">Mã số thuế</p>
+        <p class="font-medium text-foreground">{{ organization.taxCode || 'Không có' }}</p>
+      </div>
+
+      <div>
+        <p class="text-sm text-muted-foreground">Trạng thái</p>
+        <p class="font-medium text-foreground">{{ organization.status || 'Đang hoạt động' }}</p>
+      </div>
+
+      <div class="grid grid-cols-2 gap-4">
+        <div>
+          <p class="text-sm text-muted-foreground">Ngày tạo</p>
+          <p class="font-medium text-foreground">{{ organization.createdDate | date : 'dd/MM/yyyy HH:mm' }}</p>
+        </div>
+        <div>
+          <p class="text-sm text-muted-foreground">Người tạo</p>
+          <p class="font-medium text-foreground">{{ organization.createdBy || 'Không có thông tin' }}</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 gap-4">
+        <div>
+          <p class="text-sm text-muted-foreground">Ngày cập nhật cuối</p>
+          <p class="font-medium text-foreground">{{ organization.lastUpdatedDate | date : 'dd/MM/yyyy HH:mm' }}</p>
+        </div>
+        <div>
+          <p class="text-sm text-muted-foreground">Người cập nhật cuối</p>
+          <p class="font-medium text-foreground">{{ organization.lastUpdatedBy || 'Không có thông tin' }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dialog Footer -->
+    <div class="mt-6 flex justify-end">
+      <button
+        class="rounded-lg bg-primary px-4 py-2 text-primary-foreground hover:bg-primary/90"
+        (click)="closeDialog()">
+        Đóng
+      </button>
+    </div>
+  </div>
+</div>
