@@ -1,0 +1,61 @@
+<nav [@headerAnimation]="isHeaderVisible ? 'visible' : 'hidden'"
+  class="fixed left-8 right-8 top-3 z-40 m-auto max-w-[1376px] rounded-2xl bg-background/80 shadow-lg backdrop-blur-xl md:rounded-full md:border md:border-black/10 md:px-4 md:pl-6 md:transition-all">
+  <div class="mx-auto max-w-7xl px-2 sm:px-4 lg:px-6">
+    <div class="relative flex h-16 items-center justify-between">
+      <!-- Mobile menu button -->
+      <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+        <button type="button" title="Toggle mobile menu"
+          class="relative inline-flex items-center justify-center rounded-md p-1.5 text-muted-foreground hover:text-primary"
+          (click)="toggleMobileMenu()">
+          <svg *ngIf="!isMobileMenuOpen" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+          </svg>
+          <svg *ngIf="isMobileMenuOpen" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Logo and Navigation -->
+      <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+        <div class="flex shrink-0 items-center">
+          <img class="h-8 w-auto transition-transform duration-200 hover:scale-105" src="assets/images/logo.png"
+            alt="ADSFO" />
+        </div>
+
+        <!-- Desktop Navigation -->
+        <div class="hidden sm:ml-4 sm:block">
+          <div class="flex space-x-3">
+            <a *ngFor="let item of navigationItems" [routerLink]="item.path !== '#' ? item.path : null"
+              [href]="item.path === '#' ? '#' : null"
+              class="relative px-2.5 py-1.5 text-sm font-medium transition-colors hover:text-primary group"
+              [ngClass]="{
+                'text-primary dark:text-white': item.active,
+                'text-muted-foreground': !item.active
+              }">
+              {{ item.label }}
+              <span *ngIf="item.active" class="absolute bottom-0 left-0 h-0.5 w-full bg-primary"></span>
+              <span class="absolute inset-x-0 bottom-0 h-0.5 w-full scale-x-0 bg-primary/50 transition-transform group-hover:scale-x-100"></span>
+            </a>
+          </div>
+        </div>
+      </div>
+        
+    <!-- Mobile menu -->
+    <div *ngIf="isMobileMenuOpen" [@mobileMenuAnimation] class="sm:hidden">
+      <div class="space-y-1 px-2 pb-3 pt-2">
+        <a *ngFor="let item of navigationItems" [routerLink]="item.path !== '#' ? item.path : null"
+          [href]="item.path === '#' ? '#' : null"
+          class="block rounded-md px-3 py-2 text-sm font-medium transition-colors hover:text-primary" [ngClass]="{
+            'text-primary dark:text-white': item.active,
+            'text-muted-foreground': !item.active
+          }" (click)="isMobileMenuOpen = false">
+          {{ item.label }}
+        </a>
+      </div>
+    </div>
+  </div>
+  </div>
+</nav>
