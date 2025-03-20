@@ -1,0 +1,49 @@
+// Animation keyframes
+@keyframes fadeInDown {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  // Utility classes
+  .animate-fade-in-down {
+    animation: fadeInDown 1s ease-out;
+  }
+  
+  .animate-fade-in-up {
+    animation: fadeInUp 1s ease-out 0.3s;
+    animation-fill-mode: backwards;
+  }
+  
+  .btn-primary {
+    @apply inline-block px-6 py-3 bg-indigo-600 text-white font-semibold rounded-lg shadow-lg hover:bg-indigo-700 transition-all duration-300;
+  }
+  
+  .feature-card {
+    @apply bg-gray-800 p-6 rounded-xl shadow-lg transform transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl;
+  }
+  
+  .icon-box {
+    @apply w-16 h-16 flex items-center justify-center bg-gray-700 rounded-full mb-4 group-hover:bg-indigo-600 transition-colors duration-300;
+  }
+  
+  details[open] summary {
+    @apply text-indigo-400;
+  }
+  

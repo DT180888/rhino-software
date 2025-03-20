@@ -2,9 +2,6 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { animate, style, transition, trigger } from '@angular/animations';
 import { AuthenticationService } from 'src/app/core/services/authentication.service';
 import { Router } from '@angular/router';
-import { Notification } from 'src/app/core/models/notification.model';
-import { NotificationService } from 'src/app/core/services/notification.service';
-import { BaseListResponse } from 'src/app/core/models/base-response.model';
 
 @Component({
   selector: 'app-home',
@@ -43,13 +40,17 @@ import { BaseListResponse } from 'src/app/core/models/base-response.model';
   ],
 })
 export class HomeComponent implements OnInit {
-  showNotificationModal = false;
-  notifications: Notification[] = [];
+  accordionOpen: boolean[] = [];
+  currentYear = new Date().getFullYear();
 
-  constructor(public authService: AuthenticationService, private router: Router, private notificationService: NotificationService) {}
+  constructor(
+    public authService: AuthenticationService,
+    private router: Router,
+  ) { }
 
-  ngOnInit(): void {
-    if (this.authService.isAuthenticated) {
-    }
+  ngOnInit(): void {}
+
+  toggleAccordions(index: number): void {
+    this.accordionOpen[index] = !this.accordionOpen[index];
   }
 }

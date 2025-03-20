@@ -1,14 +1,13 @@
+<!-- app-home-hero.component.html -->
 <div class="relative min-h-screen w-full overflow-hidden rounded-2xl from-background to-background/95">
-  <!-- Main Content Grid -->
   <div class="container mx-auto grid h-full w-full grid-cols-1 gap-8 px-4 pt-24 lg:grid-cols-2 lg:px-8">
     <!-- Left Content -->
     <div class="relative z-10 flex flex-col justify-center">
-      <!-- Animated Badge -->
       <div
         class="group mb-8 inline-flex max-w-fit items-center gap-2 rounded-full bg-primary/10 px-4 py-2 text-sm font-medium text-primary backdrop-blur-sm transition-all hover:bg-primary/15"
         @fadeIn>
         <span class="flex h-2 w-2 rounded-full bg-primary"></span>
-        <span class="inline-block">Chào mừng bạn đến với ADSFO</span>
+        <span class="inline-block">Khám phá Rhino 8</span>
         <svg
           class="h-4 w-4 transition-transform group-hover:translate-x-1"
           fill="none"
@@ -18,63 +17,31 @@
         </svg>
       </div>
 
-      <!-- Main Heading with Animated Text -->
-      <h1 class="mb-6 font-bold tracking-tight text-foreground" @fadeInUp>
-        <div
-          class="block text-4xl sm:text-5xl lg:text-6xl"
-          appTypewriter
-          [text]="heroTexts[currentTextIndex]"
-          [delay]="150"
-          [initialDelay]="500"
-          [eraseDelay]="100"
-          [loop]="true"
-          (typewritingComplete)="onTypewritingComplete()"></div>
-        <span class="mt-4 block text-xl text-primary">Kiểm Soát Văn Phòng</span>
+      <h1 class="mb-6 text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl" @fadeInUp>
+        Mô hình 3D Linh Hoạt Nhất Thế Giới
       </h1>
-
-      <!-- Description with Enhanced Typography -->
-      <p class="mb-8 max-w-xl text-lg text-muted-foreground/90 sm:text-xl" @fadeInUp>
-        Nâng cao trải nghiệm kỹ thuật số của bạn với các giải pháp công nghệ tiên tiến của chúng tôi. Nâng cấp văn phòng
-        bằng cách triển khai Cửa thông minh hỗ trợ AI với nhận diện khuôn mặt.
+      <p class="mb-8 max-w-xl text-lg text-foreground sm:text-xl" @fadeInUp>
+        Rhino 8 mang đến các công cụ tạo mô hình 3D chính xác, nhanh chóng và đa nền tảng cho thiết kế, kỹ thuật và sản
+        xuất.
       </p>
 
-      <!-- CTA Buttons with Enhanced Styling -->
       <div class="flex flex-wrap gap-4" @fadeInUp>
         <button
-          onclick="window.location.href='/auth/sign-up'"
-          class="group relative overflow-hidden rounded-lg bg-primary px-6 py-3 text-base font-semibold text-primary-foreground shadow-lg transition-all hover:shadow-xl">
-          <span class="relative z-10">Bắt đầu ngay!</span>
-          <div
-            class="absolute inset-0 -z-0 bg-primary-foreground/10 opacity-0 transition-opacity group-hover:opacity-100"></div>
+          class="group rounded-lg bg-primary px-6 py-3 text-base font-semibold text-white shadow-lg transition-all hover:bg-primary/90">
+          Tải xuống ngay
         </button>
         <button
-          onclick="window.location.href='/auth/pricing'"
-          class="group rounded-lg border border-border bg-background/80 px-6 py-3 text-base font-semibold text-foreground backdrop-blur-sm transition-all hover:border-primary hover:text-primary">
-          Xem thêm
+          class="group rounded-lg border border-primary/50 bg-transparent px-6 py-3 text-base font-semibold text-foreground transition-all hover:border-primary/50 hover:text-primary/50">
+          Tìm hiểu thêm
           <span class="ml-2 inline-block transition-transform group-hover:translate-x-1">→</span>
         </button>
       </div>
-
-      <!-- Features Grid -->
-      <div class="mt-12 grid grid-cols-2 gap-4 pb-12 sm:grid-cols-3" @fadeInUp>
-        <div class="rounded-lg border border-border bg-background/50 p-4 backdrop-blur-sm">
-          <div class="mb-2 text-primary">🔒</div>
-          <h3 class="text-sm font-semibold text-foreground">Nâng cấp an ninh</h3>
-          <p class="mt-1 text-xs text-muted-foreground">Bằng nhận diện khuôn mặt với AI</p>
-        </div>
-        <div class="rounded-lg border border-border bg-background/50 p-4 backdrop-blur-sm">
-          <div class="mb-2 text-primary">⚡</div>
-          <h3 class="text-sm font-semibold text-foreground">Truy cập thời gian thực</h3>
-          <p class="mt-1 text-xs text-muted-foreground">Xác minh và vào ngay lập tức</p>
-        </div>
-        <div class="rounded-lg border border-border bg-background/50 p-4 backdrop-blur-sm">
-          <div class="mb-2 text-primary">📊</div>
-          <h3 class="text-sm font-semibold text-foreground">Quản lý công ty</h3>
-          <p class="mt-1 text-xs text-muted-foreground">Kiểm soát nhân viên công ty của bạn</p>
-        </div>
-      </div>
     </div>
 
+    <!-- Right Content - Visual -->
+    <div class="relative hidden lg:block">
+      <img src="assets/images/rhino.png" alt="Rhino 8" class="h-full w-full rounded-2xl object-cover shadow-lg" />
+    </div>
     <!-- Right Content - Interactive Visual -->
     <div class="relative hidden lg:block">
       <div class="absolute inset-0 overflow-hidden rounded-2xl">
@@ -116,7 +83,10 @@
       class="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:14px_24px]"></div>
   </div>
 
-  <!-- Scroll Indicator -->
+  <!-- Floating Elements -->
+  <div class="pointer-events-none absolute inset-0 overflow-hidden">
+    <div class="animate-float absolute right-1/4 top-1/4 -z-10 h-72 w-72 rounded-full bg-blue-500/20 blur-3xl"></div>
+  </div>
   <div class="absolute bottom-0 left-0 right-0 z-10 flex justify-center pb-8">
     <div class="group flex flex-col items-center">
       <span class="mb-2 text-sm text-muted-foreground/80">Lăn xuống để khám phá</span>

@@ -1,4 +1,5 @@
-import { Component, ElementRef, OnDestroy, OnInit, ViewChild, inject } from '@angular/core';
+// app-home-hero.component.ts
+import { Component, inject } from '@angular/core';
 import { animate, style, transition, trigger } from '@angular/animations';
 import { ThemeService } from 'src/app/core/services/theme.service';
 
@@ -63,53 +64,10 @@ import { ThemeService } from 'src/app/core/services/theme.service';
     `,
   ],
 })
-export class HomeHeroComponent implements OnInit, OnDestroy {
-  @ViewChild('gifElement') gifElement?: ElementRef;
-
+export class HomeHeroComponent {
   private themeService = inject(ThemeService);
-  isGifLoaded = false;
-  currentTextIndex = 0;
-  private interval: any;
 
-  // Animation assets
-  gifUrl = 'assets/videos/animation.gif';
-  lottieUrl = 'assets/animations/smart-door.lottie';
-
-  // Theme-aware getters
   get isDarkTheme(): boolean {
     return this.themeService.isDark;
-  }
-
-  heroTexts = ['Kiểm soát cửa văn phòng bạn bằng AI nhận diện FaceID', 'Biến đổi không gian làm việc của bạn'];
-
-  ngOnInit(): void {
-    this.startTextAnimation();
-  }
-
-  ngOnDestroy(): void {
-    if (this.interval) {
-      clearInterval(this.interval);
-    }
-  }
-
-  private startTextAnimation(): void {
-    this.interval = setInterval(() => {
-      this.currentTextIndex = (this.currentTextIndex + 1) % this.heroTexts.length;
-    }, 4000);
-  }
-
-  onGifLoad(): void {
-    this.isGifLoaded = true;
-    const gif = this.gifElement?.nativeElement;
-    if (gif) {
-      gif.style.filter = 'contrast(1.2) brightness(1.1)';
-    }
-  }
-
-  onTypewritingComplete(): void {
-    if (this.currentTextIndex === 0) {
-      this.currentTextIndex = 1;
-    }
-    this.currentTextIndex = 0;
   }
 }
