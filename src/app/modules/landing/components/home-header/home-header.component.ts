@@ -101,11 +101,35 @@ export class HomeHeaderComponent implements OnInit {
   unreadCount: number = 0;
   activeNotificationTab: 'all' | 'unread' = 'all';
 
+  // navigationItems = [
+  //   { label: 'Tin tức', path: '/landing/home', active: false },
+  //   { label: 'Phần mềm', path: '/landing/products', active: false },
+  //   { label: 'Thiết bị', path: '/landing/software', active: false },
+  //   { label: 'Giải pháp', path: '/landing/pricing', active: false },
+  //   { label: 'Liên hệ', path: '/landing/pricing', active: false },
+  // ];
   navigationItems = [
-    { label: 'Trang chủ', path: '/landing/home', active: false },
-    { label: 'Sản phẩm', path: '/landing/products', active: false },
-    { label: 'Phần mềm', path: '/landing/software', active: false },
-    { label: 'Bảng giá', path: '/landing/pricing', active: false },
+    { 
+      label: 'Tin tức', path: '/landing/home', active: false, children: [] 
+    },
+    { 
+      label: 'Phần mềm', path: '/landing/products', active: false, 
+      children: [
+        { label: 'Rhino', path: '/landing/products/rhino', active: false },
+        { label: 'Orang-Rhino', path: '/landing/products/orange-rhino', active: false },
+        { label: 'RhinoCAM', path: 'https://mecsoft.com/products/rhinocam/', active: false },
+        { label: 'VoxelDance', path: '/landing/products/app-b', active: false }
+      ] 
+    },
+    { 
+      label: 'Thiết bị', path: '/landing/software', active: false, 
+      children: [
+        { label: 'Máy in 3D', path: '/landing/software/pc' },
+        { label: 'Máy quét 3D', path: '/landing/software/phone' }
+      ] 
+    },
+    { label: 'Giải pháp', path: '/landing/pricing', active: false, children: [] },
+    { label: 'Liên hệ', path: '/landing/pricing', active: false, children: [] },
   ];
 
   // Theme colors and mode
@@ -332,5 +356,12 @@ export class HomeHeaderComponent implements OnInit {
   closeNotificationDetailModal(): void {
     this.showNotificationDetailModal = false;
     this.selectedNotification = null;
+  }
+  navigateTo(path: string) {
+    if (path.startsWith('http://') || path.startsWith('https://')) {
+      window.location.href = path; 
+    } else {
+      this.router.navigate([path]);
+    }
   }
 }
