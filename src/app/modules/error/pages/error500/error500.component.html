@@ -1,0 +1,11 @@
+<div
+  class="flex max-w-lg flex-col items-center justify-center gap-2 rounded-lg bg-background p-8 text-center shadow-sm">
+  <h1 class="text-4xl font-bold text-foreground">Oops! Lỗi máy chủ</h1>
+  <p class="text-base text-muted-foreground">
+    Vui lòng thử lại sau, chúng tôi đang cố gắng khắc phục sự cố này.
+  </p>
+  <app-button (buttonClick)="goToHomePage()" impact="bold" tone="primary" shape="rounded" size="medium">
+    Về trang chủ
+  </app-button>
+  <svg-icon src="assets/illustrations/500.svg" svgClass="w-[300px] h-[300px] text-muted-foreground "> </svg-icon>
+</div>

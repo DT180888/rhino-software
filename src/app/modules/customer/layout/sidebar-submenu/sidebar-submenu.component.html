@@ -1,0 +1,59 @@
+<!-- sidebar-submenu.component.html -->
+<div
+  *ngIf="submenu.children"
+  class="overflow-hidden transition-all duration-300"
+  [@submenuAnimation]="submenu.expanded ? 'expanded' : 'collapsed'">
+  <ul class="flex flex-col border-l border-dashed border-border pl-2 text-muted-foreground">
+    <li *ngFor="let sub of submenu.children">
+      <div 
+        (click)="$event.stopPropagation(); toggleMenu(sub)"
+        (keydown.enter)="$event.stopPropagation(); toggleMenu(sub)"
+        tabindex="0"
+        role="button"
+        class="group flex items-center rounded text-muted-foreground hover:bg-muted hover:text-foreground">
+        
+        <!-- Condition -->
+        <ng-container
+          [ngTemplateOutlet]="sub.children ? childMenu : parentMenu"
+          [ngTemplateOutletContext]="{ sub: sub }">
+        </ng-container>
+
+        <!-- Parent Menu -->
+        <ng-template #parentMenu let-sub="sub">
+          <a
+            [routerLink]="sub.route"
+            routerLinkActive="text-primary"
+            [routerLinkActiveOptions]="{ exact: true }"
+            class="flex w-full items-center px-4 py-2 text-xs font-semibold focus:outline-none">
+            {{ sub.label }}
+          </a>
+        </ng-template>
+
+        <!-- Child Menu -->
+        <ng-template #childMenu let-sub="sub">
+          <div class="flex w-full items-center justify-between">
+            <a class="flex-1 px-4 py-2 text-xs font-semibold cursor-pointer focus:outline-none">
+              {{ sub.label }}
+            </a>
+            <button
+              class="flex items-center p-1 text-muted-foreground/50 transition-transform duration-300 group-hover:text-foreground"
+              [class.rotate-90]="sub.expanded">
+              <svg-icon 
+                src="assets/icons/heroicons/solid/chevron-right.svg" 
+                [svgClass]="'h-4 w-4'"
+                class="[&>svg]:stroke-current [&>svg]:fill-none"> 
+              </svg-icon>
+            </button>
+          </div>
+        </ng-template>
+      </div>
+
+      <!-- Nested Submenu -->
+      <app-customer-sidebar-submenu 
+        *ngIf="sub.children"
+        [submenu]="sub"
+        class="ml-2">
+      </app-customer-sidebar-submenu>
+    </li>
+  </ul>
+</div>

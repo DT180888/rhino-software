@@ -1,0 +1,98 @@
+<div class="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
+  <div class="w-full max-w-2xl rounded-lg bg-background p-6 shadow-lg">
+    <!-- Dialog Header -->
+    <div class="mb-6 flex items-center justify-between">
+      <h2 class="text-xl font-semibold text-foreground">Thông tin chi tiết đơn hàng</h2>
+      <button
+        class="rounded-full p-1 text-muted-foreground hover:bg-muted hover:text-foreground"
+        (click)="closeDialog()">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Order Details -->
+    <div class="space-y-4">
+      <!-- Order Code & Status -->
+      <div class="grid grid-cols-2 gap-4">
+        <div>
+          <p class="text-sm text-muted-foreground">Mã đơn hàng</p>
+          <p class="font-medium text-foreground">{{ order.code }}</p>
+        </div>
+        <div>
+          <p class="text-sm text-muted-foreground">Trạng thái</p>
+          <p class="font-medium text-foreground">{{ order.orderStatus }}</p>
+        </div>
+      </div>
+
+      <!-- Organization & Company -->
+      <div>
+        <p class="text-sm text-muted-foreground">Tổ chức</p>
+        <p class="font-medium text-foreground">{{ order.organizationName || 'Chưa cập nhật' }}</p>
+      </div>
+      <div>
+        <p class="text-sm text-muted-foreground">Công ty</p>
+        <p class="font-medium text-foreground">{{ order.companyName || 'Chưa cập nhật' }}</p>
+      </div>
+
+      <!-- Additional Order Summary -->
+      <div class="grid grid-cols-2 gap-4">
+        <div>
+          <p class="text-sm text-muted-foreground">Tổng số nhân viên</p>
+          <p class="font-medium text-foreground">{{ order.totalMaxEmployees }}</p>
+        </div>
+        <div>
+          <p class="text-sm text-muted-foreground">Tổng số thiết bị</p>
+          <p class="font-medium text-foreground">{{ order.totalDevices }}</p>
+        </div>
+      </div>
+
+      <!-- Subscription List -->
+      <div class="rounded-lg border border-border p-4">
+        <h3 class="mb-3 font-medium text-foreground">Danh sách các gói đã mua</h3>
+        <div class="space-y-3">
+          <div *ngFor="let sub of order.subscriptions" class="border-b border-border pb-2 last:border-0 last:pb-0">
+            <p class="font-medium text-foreground">{{ sub.subscriptionName }}</p>
+            <p class="mt-1 text-sm text-primary">
+              Số nhân viên cho phép: {{ sub.maxEmployees }} - Thiết bị: {{ sub.deviceCount }}
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Date Range -->
+      <div class="grid grid-cols-2 gap-4">
+        <div>
+          <p class="text-sm text-muted-foreground">Ngày bắt đầu</p>
+          <p class="font-medium text-foreground">
+            {{ order.startDate ? (order.startDate | date : 'dd/MM/yyyy') : 'Chưa cập nhật' }}
+          </p>
+        </div>
+        <div>
+          <p class="text-sm text-muted-foreground">Ngày kết thúc</p>
+          <p class="font-medium text-foreground">
+            {{ order.endDate ? (order.endDate | date : 'dd/MM/yyyy') : 'Chưa cập nhật' }}
+          </p>
+        </div>
+      </div>
+
+      <!-- Total Price -->
+      <div>
+        <p class="text-sm text-muted-foreground">Tổng tiền</p>
+        <p class="font-medium text-primary">
+          {{ order.totalPrice ? (order.totalPrice | currency : 'VND') : '0 đ' }}
+        </p>
+      </div>
+    </div>
+
+    <!-- Dialog Footer -->
+    <div class="mt-6 flex justify-end">
+      <button
+        class="rounded-lg bg-primary px-4 py-2 text-primary-foreground hover:bg-primary/90"
+        (click)="closeDialog()">
+        Đóng
+      </button>
+    </div>
+  </div>
+</div>

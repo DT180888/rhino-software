@@ -1,0 +1,25 @@
+:host {
+    display: block;
+    width: 100%;
+  }
+  
+  // Optional animations
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  // Optional hover effects for team cards
+  .team-member-card {
+    transition: transform 0.2s ease-in-out;
+    
+    &:hover {
+      transform: translateY(-4px);
+    }
+  }
