@@ -1,0 +1,89 @@
+<section class="relative py-16 md:py-24">
+  <div class="container mx-auto px-4 relative z-10">
+    <div
+      class="bg-primary/10 backdrop-blur-sm text-primary font-semibold px-6 py-3 rounded-full inline-flex items-center gap-2 w-fit">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+      Yêu cầu hệ thống
+    </div>
+    <p class="text-foreground/80 text-lg">
+      Rhino chạy trên PC hoặc máy tính xách tay chạy Windows hoặc Mac, với
+      <strong class="text-primary font-medium">Rhino 8 cho Windows</strong>
+    </p>
+
+    <!-- BẮT ĐẦU: Khu vực carousel -->
+    <div class="carousel-container relative mx-auto max-w-6xl overflow-hidden z-10">
+      <div class="relative flex items-center justify-center" style="height: 25rem;">
+        <div *ngFor="let item of carouselItems; let i = index"
+          class="absolute transition-transform duration-500 ease-in-out" [ngStyle]="getSlideStyle(i)">
+          <div class="group relative rounded-2xl border border-border/5 bg-background p-6 shadow-lg
+          backdrop-blur-sm transition-all w-72 md:w-80 min-h-80">
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="text-xl font-bold text-foreground">
+                {{ item.title }}
+              </h3>
+              <div class="p-2 rounded-full bg-primary">
+                <img [src]="item.icon" alt="icon" class="w-6 h-6 text-white" />
+              </div>
+            </div>
+
+            <!-- Tuỳ kiểu hiển thị là list/text để render -->
+            <ng-container *ngIf="item.type === 'list'; else textBlock">
+              <ul class="space-y-2 text-foreground text-sm">
+                <li *ngFor="let c of item.content" class="flex items-center gap-2">
+                  <!-- Hiển thị icon check hoặc cross tuỳ theo item.checkType -->
+                  <svg *ngIf="item.checkType === 'check'" class="w-4 h-4 text-primary flex-shrink-0" fill="none"
+                    stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <svg *ngIf="item.checkType === 'cross'" xmlns="http://www.w3.org/2000/svg" fill="none"
+                    viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                    class="w-4 h-4 text-primary flex-shrink-0">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                  </svg>
+
+                  <!-- Nội dung text -->
+                  <span>{{ c }}</span>
+                </li>
+              </ul>
+            </ng-container>
+            <ng-template #textBlock>
+              <p class="text-foreground text-sm">
+                <!-- Trường hợp là text, bạn có thể tuỳ biến -->
+                {{ item.content[0] }}
+              </p>
+            </ng-template>
+          </div>
+        </div>
+
+        <!-- Nút bấm chuyển slide trái/phải -->
+        <button (click)="prev()" class="absolute left-0 top-1/2 -translate-y-1/2 bg-black/50 text-white p-2
+                 rounded-r-lg hover:bg-black/80 z-20">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+
+        <button (click)="next()" class="absolute right-0 top-1/2 -translate-y-1/2 bg-black/50 text-white p-2
+                 rounded-l-lg hover:bg-black/80 z-20">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Dot indicators -->
+      <div class="flex justify-center mt-6">
+        <button *ngFor="let item of carouselItems; let i = index" (click)="goToSlide(i)"
+          class="w-2 h-2 mx-1 rounded-full transition-all" [ngClass]="{
+            'bg-white': currentIndex === i,
+            'bg-white/50': currentIndex !== i
+          }">
+        </button>
+      </div>
+    </div>
+    <!-- HẾT: Khu vực carousel -->
+  </div>
+</section>

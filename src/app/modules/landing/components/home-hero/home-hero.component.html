@@ -1,0 +1,230 @@
+<!-- app-home-hero.component.html -->
+<div class="relative min-h-[95vh] w-full overflow-hidden rounded-2xl from-background to-background/95">
+  <div class="container mx-auto grid h-full w-full grid-cols-1 gap-8 px-4 pt-[15rem] lg:grid-cols-2 lg:px-8">
+    <!-- Left Content -->
+    <div class="relative z-10 flex flex-col justify-center">
+      <div
+        class="group mb-8 inline-flex max-w-fit items-center gap-2 rounded-full bg-primary/10 px-4 py-2 text-sm font-medium text-primary backdrop-blur-sm transition-all hover:bg-primary/15"
+        @fadeIn>
+        <span class="flex h-2 w-2 rounded-full bg-primary"></span>
+        <span class="inline-block">Khám phá Rhino 8</span>
+        <svg
+          class="h-4 w-4 transition-transform group-hover:translate-x-1"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </div>
+
+      <h1 class="mb-6 text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl" @fadeInUp>
+        Mô hình 3D Linh Hoạt Nhất Thế Giới
+      </h1>
+      <p class="mb-8 max-w-xl text-lg text-foreground sm:text-xl" @fadeInUp>
+        Rhino 8 mang đến các công cụ tạo mô hình 3D chính xác, nhanh chóng và đa nền tảng cho thiết kế, kỹ thuật và sản
+        xuất.
+      </p>
+
+      <div class="flex flex-wrap gap-4" @fadeInUp>
+        <button
+          class="group rounded-lg bg-primary px-6 py-3 text-base font-semibold text-white shadow-lg transition-all hover:bg-primary/90">
+          Tải xuống ngay
+        </button>
+        <button routerLink="/landing/rhino"
+          class="group rounded-lg border border-primary/50 bg-transparent px-6 py-3 text-base font-semibold text-foreground transition-all hover:border-primary/50 hover:text-primary/50">
+          Tìm hiểu thêm
+          <span class="ml-2 inline-block transition-transform group-hover:translate-x-1">→</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Right Content - Visual -->
+    <div class="relative lg:block">
+      <img src="assets/images/rhino.png" alt="Rhino 8" class="h-full w-full rounded-2xl object-cover shadow-lg" />
+    </div>
+    <!-- Right Content - Interactive Visual -->
+    <!-- <div class="relative hidden lg:block">
+      <div class="absolute inset-0 overflow-hidden rounded-2xl">
+        <div class="relative h-full w-full">
+         
+          <ng-container *ngIf="!isDarkTheme; else darkTheme">
+            <dotlottie-player
+              src="https://lottie.host/e7bb1da5-535c-4085-85d4-f00b85e43a0b/hvOVQyUXh2.lottie"
+              background="transparent"
+              speed="1"
+              class="h-full w-full"
+              loop
+              autoplay></dotlottie-player>
+          </ng-container>
+
+          <ng-template #darkTheme>
+            <dotlottie-player
+              src="https://lottie.host/f0bc22be-f9e1-476b-936a-8efccb96a716/Tu0uP0ajKb.lottie"
+              background="transparent"
+              speed="1"
+              class="h-full w-full"
+              loop
+              autoplay></dotlottie-player>
+          </ng-template>
+        </div>
+      </div>
+    </div> -->
+  </div>
+
+  <!-- Floating Elements -->
+  <div class="pointer-events-none absolute inset-0 overflow-hidden">
+    <!-- Dynamic Gradient Orbs -->
+    <div class="animate-float absolute right-1/4 top-1/4 -z-10 h-72 w-72 rounded-full bg-primary/20 blur-3xl"></div>
+    <div
+      class="animate-float-delayed absolute bottom-1/4 right-1/4 -z-10 h-48 w-48 rounded-full bg-primary/20 blur-3xl"></div>
+
+    <!-- Decorative Grid -->
+    <div
+      class="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:14px_24px]"></div>
+  </div>
+
+  <!-- Floating Elements -->
+  <!-- <div class="pointer-events-none absolute inset-0 overflow-hidden">
+    <div class="animate-float absolute right-1/4 top-1/4 -z-10 h-72 w-72 rounded-full bg-blue-500/20 blur-3xl"></div>
+  </div> -->
+  <div class="absolute bottom-0 left-0 right-0 z-10 flex justify-center pb-8">
+    <div class="group flex flex-col items-center">
+      <span class="mb-2 text-sm text-muted-foreground/80">Lăn xuống để khám phá thêm sản phẩm</span>
+      <div class="relative h-6 w-4">
+        <div
+          class="absolute inset-0 rounded-full border-2 border-muted transition-colors group-hover:border-primary"></div>
+        <div
+          class="animate-scroll-down absolute left-1/2 top-1/2 h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-muted transition-colors group-hover:bg-primary"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- app-home-vd.component.html -->
+<section class="voxelcel-dance relative  w-full overflow-hidden rounded-2xl from-background to-background/95 mt-20">
+  <div class="container mx-auto grid h-full w-full px-4  lg:px-8">
+    <!-- Left Content -->
+    <div class="relative z-10 flex flex-col justify-center">
+      <div
+        class="group mb-8 inline-flex max-w-fit items-center gap-2 rounded-full bg-primary/10 px-4 py-2 text-sm font-medium text-primary backdrop-blur-sm transition-all hover:bg-primary/15"
+        @fadeIn>
+        <span class="flex h-2 w-2 rounded-full bg-primary"></span>
+        <span class="inline-block">Khám phá VoxelDance</span>
+        <svg class="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor"
+          viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </div>
+
+      <h1 class="mb-6 text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl" @fadeInUp>
+        Nền Tảng Xử Lý In 3D Công Nghiệp
+      </h1>
+      <p class="mb-8 text-lg text-foreground sm:text-xl" @fadeInUp>
+        VoxelDance Manufacturing là phần mềm chuyên nghiệp cho chuẩn bị dữ liệu in 3D, hỗ trợ in SLM, SLA, DLP và nhiều định dạng.
+      </p>
+    </div>
+
+    <!-- Right Content -->
+    <!-- <div class="relative lg:block">
+      <img src="assets/images/voxeldance.png" alt="VoxelDance" class="h-full w-full rounded-2xl object-cover shadow-lg" />
+    </div> -->
+    <div class="mt-[30px] w-full border-muted-foreground text-center">
+      <h2 class="text-3xl font-bold text-foreground">Tailored 3D printing software solutions</h2>
+      <p class="mt-2 text-foreground">Improving your printing experience</p>
+    
+      <div class="mt-12 gap-12 ">
+        <!-- VoxelDance Additive -->
+        <div class="flex flex-col items-center">
+          <img src="assets/images/IntroVoxeldance.png" alt="VoxelDance Additive" class="max-w-full h-auto" />
+          <div class=" flex flex-col gap-6 text-left with-full mt-[30px]">
+            <h3 class="flex items-center text-3xl font-semibold text-foreground">
+              <img src="assets/images/LogoVoxecDanceAddictive.png"
+               alt="Icon" class="mr-2 h-6 w-6" />
+              VoxelDance Additive
+            </h3>
+            <p class="text-foreground text-lg">
+              An industrial all-in-one additive manufacturing software for OEMs, enterprises, compatible with LPBF, SLA and SLS technologies.
+            </p>
+            <button (click)="goToFragmentPage('/landing/voxel-dance', 'Manufacturing')"
+              class="group rounded-lg bg-primary px-6 py-3 text-base font-semibold text-white shadow-lg transition-all hover:bg-primary/90">
+              Tìm hiểu thêm
+            </button>
+          </div>
+        </div>
+    
+      </div>
+    </div>
+    
+  </div>
+
+</section>
+<section class="relative  w-full overflow-hidden rounded-2xl from-background to-background/95 mt-20">
+  <div class="container mx-auto grid h-full w-full px-4  lg:px-8">
+    <!-- Left Content -->
+    <div class="relative z-10 flex flex-col justify-center">
+      <div
+        class="group mb-8 inline-flex max-w-fit items-center gap-2 rounded-full bg-primary/10 px-4 py-2 text-sm font-medium text-primary backdrop-blur-sm transition-all hover:bg-primary/15"
+        @fadeIn>
+        <span class="flex h-2 w-2 rounded-full bg-primary"></span>
+        <span class="inline-block">Khám phá RhinoCAM</span>
+        <svg class="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor"
+          viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </div>
+
+      <h1 class="mb-6 text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl" @fadeInUp>
+        Nền Tảng Xử Lý In 3D Công Nghiệp
+      </h1>
+      <div class="mb-8 text-lg text-foreground sm:text-xl flex flex-col gap-4" @fadeInUp>
+        <p>RhinoCAM is a <a class="text-primary font-bold cursor-pointer" href="https://mecsoft.com/">CAM Software</a> plug-in that runs completely inside of Rhinoceros 8 (Windows only).</p>
+        <p>RhinoCAM marries the power of Rhino’s freeform modeling with the legendary CAM functionality of <a class="text-primary font-bold cursor-pointer" href="https://mecsoft.com/products/visual-cad-cam/">VisualCAM</a> to bring you a product of unrivaled capability.</p>
+        <p>With seamless and complete integration RhinoCAM, acts and feels like you are working with Rhino when generating CNC programs.
+            RhinoCAM is also fully associative to any geometry changes within Rhino.</p>
+        <p>RhinoCAM includes modules for MILL, TURN, NEST & ART</p>
+      </div>
+    </div>
+
+    <!-- Right Content -->
+    <!-- <div class="relative lg:block">
+      <img src="assets/images/voxeldance.png" alt="VoxelDance" class="h-full w-full rounded-2xl object-cover shadow-lg" />
+    </div> -->
+    <div class="mt-[30px] w-full border-muted-foreground text-center">
+      <h2 class="text-3xl font-bold text-foreground">Tailored 3D printing software solutions</h2>
+      <p class="mt-2 text-foreground">Improving your printing experience</p>
+    
+      <div class="mt-12 gap-12 ">
+        <!-- VoxelDance Additive -->
+        <div class="flex flex-col items-center">
+          <img src="assets/images/IntroVoxeldance.png" alt="VoxelDance Additive" class="max-w-full h-auto" />
+          <div class=" flex flex-col gap-6 text-left with-full mt-[30px]">
+            <h3 class="flex items-center text-3xl font-semibold text-foreground">
+              <img src="assets/images/LogoVoxecDanceAddictive.png"
+               alt="Icon" class="mr-2 h-6 w-6" />
+              VoxelDance Additive
+            </h3>
+            <p class="text-foreground text-lg">
+              An industrial all-in-one additive manufacturing software for OEMs, enterprises, compatible with LPBF, SLA and SLS technologies.
+            </p>
+            <button
+            class="group rounded-lg bg-primary px-6 py-3 text-base font-semibold text-white shadow-lg transition-all hover:bg-primary/90">
+            Tải xuống ngay
+            </button>
+            <button
+            class="group rounded-lg bg-primary px-6 py-3 text-base font-semibold text-white shadow-lg transition-all hover:bg-primary/90">
+             <a href="https://mecsoft.com/demo-rhinocam/">Tải xuống ngay</a>
+            </button>
+            <button
+              class="group rounded-lg border border-primary/50 bg-transparent px-6 py-3 text-base font-semibold text-foreground transition-all hover:border-primary/50 hover:text-primary/50">
+              Tìm hiểu thêm
+              <span class="ml-2 inline-block transition-transform group-hover:translate-x-1">→</span>
+            </button>
+          </div>
+        </div>
+    
+      </div>
+    </div>
+    
+  </div>
+
+</section>
+

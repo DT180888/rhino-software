@@ -1,0 +1,29 @@
+.nav-link {
+    &.active {
+      color: var(--primary);
+    }
+  }
+  
+  .nav-underline {
+    transition: transform 0.2s ease-out;
+    transform-origin: left;
+    transform: scaleX(0);
+  }
+  
+  .nav-link:hover {
+    .nav-underline {
+      transform: scaleX(1);
+    }
+  }
+  
+  .nav-icon-button {
+    position: relative;
+    border-radius: 9999px;
+    padding: 0.25rem;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  // Add hover state for nav-icon-button if needed
+  .nav-icon-button:hover {
+    color: var(--primary);
+  }

@@ -1,0 +1,25 @@
+<div tuiTheme="dark">
+  <tui-root>
+    <div class="flex h-screen w-full overflow-hidden">
+      <!-- Sidebar -->
+      <app-customer-sidebar></app-customer-sidebar>
+
+      <!-- Main Content Container -->
+      <div class="flex grow flex-col">
+        <!-- Navbar -->
+        <app-customer-navbar></app-customer-navbar>
+
+        <!-- Main Content -->
+        <div class="flex grow flex-col content-start overflow-hidden bg-card">
+          <div
+            id="main-content"
+            class="grow overflow-auto scrollbar-thin scrollbar-thumb-rounded scrollbar-track-rounded scrollbar-track-transparent scrollbar-thumb-muted">
+            <div class="mx-auto px-4 py-4 lg:container sm:px-8">
+              <router-outlet></router-outlet>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </tui-root>
+</div>

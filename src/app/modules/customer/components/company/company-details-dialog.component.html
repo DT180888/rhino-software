@@ -1,0 +1,88 @@
+<div class="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
+    <div class="w-full max-w-2xl rounded-lg bg-background p-6 shadow-lg">
+      <!-- Dialog Header -->
+      <div class="mb-6 flex items-center justify-between">
+        <h2 class="text-xl font-semibold text-foreground">Thông tin chi tiết công ty</h2>
+        <button 
+          class="rounded-full p-1 text-muted-foreground hover:bg-muted hover:text-foreground"
+          (click)="closeDialog()">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+  
+      <!-- Company Details -->
+      <div class="space-y-4">
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <p class="text-sm text-muted-foreground">Tên công ty</p>
+            <p class="font-medium text-foreground">{{ company.companyName }}</p>
+          </div>
+        </div>
+  
+        <div>
+          <p class="text-sm text-muted-foreground">Thuộc tổ chức</p>
+          <p class="font-medium text-foreground">{{ organizationName }}</p>
+        </div>
+  
+        <div>
+          <p class="text-sm text-muted-foreground">Loại công ty</p>
+          <p class="font-medium text-foreground">{{ companyTypeName }}</p>
+        </div>
+  
+        <!-- Location Information -->
+        <div class="rounded-lg border border-border p-4">
+          <h3 class="mb-3 font-medium text-foreground">Thông tin địa điểm</h3>
+          <div class="space-y-3">
+            <div>
+              <p class="text-sm text-muted-foreground">Địa chỉ</p>
+              <p class="font-medium text-foreground">{{ company.location.address }}</p>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <p class="text-sm text-muted-foreground">Quận/Huyện</p>
+                <p class="font-medium text-foreground">{{ company.location.district }}</p>
+              </div>
+              <div>
+                <p class="text-sm text-muted-foreground">Thành phố</p>
+                <p class="font-medium text-foreground">{{ company.location.city }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Creation and Update Information -->
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <p class="text-sm text-muted-foreground">Ngày tạo</p>
+            <p class="font-medium text-foreground">{{ company.createdDate | date:'dd/MM/yyyy HH:mm' }}</p>
+          </div>
+          <div>
+            <p class="text-sm text-muted-foreground">Người tạo</p>
+            <p class="font-medium text-foreground">{{ company.createdBy || 'Không có thông tin' }}</p>
+          </div>
+        </div>
+  
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <p class="text-sm text-muted-foreground">Ngày cập nhật cuối</p>
+            <p class="font-medium text-foreground">{{ company.lastUpdatedDate | date:'dd/MM/yyyy HH:mm' }}</p>
+          </div>
+          <div>
+            <p class="text-sm text-muted-foreground">Người cập nhật cuối</p>
+            <p class="font-medium text-foreground">{{ company.lastUpdatedBy || 'Không có thông tin' }}</p>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Dialog Footer -->
+      <div class="mt-6 flex justify-end">
+        <button
+          class="rounded-lg bg-primary px-4 py-2 text-primary-foreground hover:bg-primary/90"
+          (click)="closeDialog()">
+          Đóng
+        </button>
+      </div>
+    </div>
+  </div>
