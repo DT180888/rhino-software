@@ -1,59 +1,89 @@
 <section class="relative py-16 md:py-24">
-  <!-- Content container -->
-  <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <!-- Section header -->
-    <div class="mb-16 text-center">
-      <h2 class="mb-4 text-4xl font-bold tracking-tight text-foreground sm:text-5xl">Giải pháp Bảo mật Toàn diện</h2>
-      <p class="mx-auto max-w-2xl text-lg text-muted-foreground/80">
-        Khám phá các giải pháp quản lý truy cập tiên tiến của chúng tôi, được thiết kế để tăng cường bảo mật và tối ưu
-        hóa hoạt động cho doanh nghiệp của bạn.
-      </p>
+  <div class="container mx-auto px-4 relative z-10">
+    <div
+      class="bg-primary/10 backdrop-blur-sm text-primary font-semibold px-6 py-3 rounded-full inline-flex items-center gap-2 w-fit">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+      Yêu cầu hệ thống
     </div>
+    <p class="text-foreground/80 text-lg">
+      Rhino chạy trên PC hoặc máy tính xách tay chạy Windows hoặc Mac, với
+      <strong class="text-primary font-medium">Rhino 8 cho Windows</strong>
+    </p>
 
-    <!-- Solutions grid -->
-    <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
-      <!-- Solution card -->
-      <div
-        *ngFor="let solution of solutions"
-        class="group relative rounded-2xl border border-border/5 bg-card/50 p-8 shadow-lg backdrop-blur-sm transition-all hover:bg-card hover:shadow-xl">
-        <!-- Icon -->
-        <div
-          class="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-background">
-          <lucide-icon [name]="solution.icon" class="h-6 w-6"></lucide-icon>
+    <!-- BẮT ĐẦU: Khu vực carousel -->
+    <div class="carousel-container relative mx-auto max-w-6xl overflow-hidden z-10">
+      <div class="relative flex items-center justify-center" style="height: 25rem;">
+        <div *ngFor="let item of carouselItems; let i = index"
+          class="absolute transition-transform duration-500 ease-in-out" [ngStyle]="getSlideStyle(i)">
+          <div class="group relative rounded-2xl border border-border/5 bg-background p-6 shadow-lg
+          backdrop-blur-sm transition-all w-72 md:w-80 min-h-80">
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="text-xl font-bold text-foreground">
+                {{ item.title }}
+              </h3>
+              <div class="p-2 rounded-full bg-primary">
+                <img [src]="item.icon" alt="icon" class="w-6 h-6 text-white" />
+              </div>
+            </div>
+
+            <!-- Tuỳ kiểu hiển thị là list/text để render -->
+            <ng-container *ngIf="item.type === 'list'; else textBlock">
+              <ul class="space-y-2 text-foreground text-sm">
+                <li *ngFor="let c of item.content" class="flex items-center gap-2">
+                  <!-- Hiển thị icon check hoặc cross tuỳ theo item.checkType -->
+                  <svg *ngIf="item.checkType === 'check'" class="w-4 h-4 text-primary flex-shrink-0" fill="none"
+                    stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <svg *ngIf="item.checkType === 'cross'" xmlns="http://www.w3.org/2000/svg" fill="none"
+                    viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                    class="w-4 h-4 text-primary flex-shrink-0">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                  </svg>
+
+                  <!-- Nội dung text -->
+                  <span>{{ c }}</span>
+                </li>
+              </ul>
+            </ng-container>
+            <ng-template #textBlock>
+              <p class="text-foreground text-sm">
+                <!-- Trường hợp là text, bạn có thể tuỳ biến -->
+                {{ item.content[0] }}
+              </p>
+            </ng-template>
+          </div>
         </div>
 
-        <!-- Content -->
-        <div>
-          <h3 class="mb-3 text-xl font-semibold text-foreground">{{ solution.title }}</h3>
-          <p class="mb-6 text-muted-foreground/90">{{ solution.description }}</p>
+        <!-- Nút bấm chuyển slide trái/phải -->
+        <button (click)="prev()" class="absolute left-0 top-1/2 -translate-y-1/2 bg-black/50 text-white p-2
+                 rounded-r-lg hover:bg-black/80 z-20">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
 
-          <!-- Features list -->
-          <ul class="space-y-3">
-            <li *ngFor="let feature of solution.features" class="flex items-center text-sm text-muted-foreground/80">
-              <svg class="mr-2 h-4 w-4 text-primary/90" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-              </svg>
-              {{ feature }}
-            </li>
-          </ul>
-        </div>
+        <button (click)="next()" class="absolute right-0 top-1/2 -translate-y-1/2 bg-black/50 text-white p-2
+                 rounded-l-lg hover:bg-black/80 z-20">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+      </div>
 
-        <!-- Hover effect overlay -->
-        <div
-          class="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-b from-primary/5 to-primary/10 opacity-0 transition-opacity group-hover:opacity-100"></div>
+      <!-- Dot indicators -->
+      <div class="flex justify-center mt-6">
+        <button *ngFor="let item of carouselItems; let i = index" (click)="goToSlide(i)"
+          class="w-2 h-2 mx-1 rounded-full transition-all" [ngClass]="{
+            'bg-white': currentIndex === i,
+            'bg-white/50': currentIndex !== i
+          }">
+        </button>
       </div>
     </div>
-
-    <!-- CTA Button -->
-    <div class="mt-12 text-center">
-      <a
-        href="/auth/sign-up"
-        class="inline-flex items-center justify-center rounded-full bg-primary px-8 py-3 text-sm font-medium text-primary-foreground shadow-lg transition-all hover:bg-primary/90 hover:shadow-xl">
-        Bắt đầu ngay
-        <svg class="ml-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-        </svg>
-      </a>
-    </div>
+    <!-- HẾT: Khu vực carousel -->
   </div>
 </section>

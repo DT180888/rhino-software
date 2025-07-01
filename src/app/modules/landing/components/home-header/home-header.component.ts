@@ -110,27 +110,41 @@ export class HomeHeaderComponent implements OnInit {
   // ];
   navigationItems = [
     { 
-      label: 'Tin tức', path: '/landing/home', active: false, children: [] 
+      label: 'Tin tức', path: '/landing/home', active: false, submenuChild: [], children: [] 
     },
     { 
       label: 'Phần mềm', path: '/landing/products', active: false, 
       children: [
-        { label: 'Rhino', path: '/landing/products/rhino', active: false },
-        { label: 'Orang-Rhino', path: '/landing/products/orange-rhino', active: false },
-        { label: 'RhinoCAM', path: 'https://mecsoft.com/products/rhinocam/', active: false },
-        { label: 'VoxelDance', path: '/landing/products/app-b', active: false }
-      ] 
+        { label: 'Rhino', path: '/landing/rhino', active: false, submenuChild: [], children: [] },
+        { label: 'Orang-Rhino', path: '/landing/orange-rhino', active: false, submenuChild: [], children: [] },
+        { label: 'RhinoCAM', path: 'https://mecsoft.com/products/rhinocam/', active: false, submenuChild: [], children: [] },
+        { label: 'VoxelDance', path: '/landing/voxel-dance', active: false, 
+          submenuChild: [
+            { label: 'VoxelDance Manufacturing', path: '/landing/voxel-dance', active: false, submenuChild: [], children: [],  fragment: 'Manufacturing'  },
+            { label: 'VoxelDance Engineering', path: '/landing/voxel-dance', active: false, submenuChild: [], children: [] , fragment: 'Engineering'}
+          ],
+          children: []
+        }
+      ],
+      submenuChild: []
     },
     { 
       label: 'Thiết bị', path: '/landing/software', active: false, 
       children: [
-        { label: 'Máy in 3D', path: '/landing/software/pc' },
-        { label: 'Máy quét 3D', path: '/landing/software/phone' }
-      ] 
+        { label: 'Máy in 3D', path: '/landing/printer3d', active: false, submenuChild: [], children: [] },
+        { label: 'Máy quét 3D', path: '/landing/scan3d', active: false, submenuChild: [], children: [] }
+      ],
+      submenuChild: []
     },
-    { label: 'Giải pháp', path: '/landing/pricing', active: false, children: [] },
-    { label: 'Liên hệ', path: '/landing/pricing', active: false, children: [] },
+    { 
+      label: 'Giải pháp', path: '/landing/software/phone', active: false, submenuChild: [], children: [] 
+    },
+    { 
+      label: 'Liên hệ', path: '/landing/software/pc', active: false, submenuChild: [], children: [] 
+    },
+   
   ];
+  
 
   // Theme colors and mode
   themeColors = [
@@ -357,11 +371,22 @@ export class HomeHeaderComponent implements OnInit {
     this.showNotificationDetailModal = false;
     this.selectedNotification = null;
   }
-  navigateTo(path: string) {
+  navigateTo(path: string, fragment?: string) {
     if (path.startsWith('http://') || path.startsWith('https://')) {
-      window.location.href = path; 
+      window.location.href = path;  
     } else {
-      this.router.navigate([path]);
+      this.router.navigate([path]).then(() => {
+        if (fragment) {
+          setTimeout(() => {
+            const element = document.getElementById(fragment);
+            if (element) {
+              element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+          }, 100); // Đợi một chút để đảm bảo trang đã tải xong
+        }
+      });
     }
   }
+  
 }
+
