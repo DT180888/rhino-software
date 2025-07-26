@@ -1,0 +1,299 @@
+<!-- Main Container -->
+<div class="min-h-screen w-full bg-background text-foreground">
+    <!-- Hero Section -->
+    <div class="w-full pt-32 pb-16">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex flex-col items-center text-center mb-12">
+                <h1 class="text-3xl md:text-6xl font-extrabold mb-6 tracking-tight">
+                    TEXU 3W
+                </h1>
+                <p class="text-xl max-w-2xl">
+                    Công nghệ quét 3D chuyên nghiệp cho độ chính xác tuyệt đối.
+                </p>
+            </div>
+
+            <div class="flex justify-center">
+                <div class="relative w-full max-w-xl">
+                    <!-- Main product image with glow effect -->
+                    <div class="absolute inset-0 bg-blue-500 rounded-full filter blur-3xl opacity-20 animate-pulse">
+                    </div>
+                    <img [src]="product.imageUrl" alt="TEXU 3W" class="relative z-10 mx-auto w-full object-contain">
+                </div>
+            </div>
+
+            <div class="mt-12 text-center max-w-2xl mx-auto">
+                <p class="text-lg mb-8">
+                    {{product.tagline}}
+                </p>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <button class="px-8 py-3 bg-primary rounded-full hover:bg-primary/70 transition-colors">
+                        MUA NGAY
+                    </button>
+                    <button
+                        class="px-8 py-3 border border-black/50 dark:border dark:border-white rounded-full hover:bg-white hover:text-black transition-colors">
+                        TÌM HIỂU THÊM
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Video Section -->
+    <div class="py-16 bg-background dark:bg-gray-900">
+        <div class="max-w-5xl mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-8 text-center">KHÁM PHÁ TEXU 3W</h2>
+
+            <div class="aspect-w-16 aspect-h-9 rounded-xl overflow-hidden shadow-2xl border border-gray-800">
+                <div class="w-full h-full bg-gray-800 flex items-center justify-center">
+                    <div class="relative w-full h-full">
+                        <video controls class="w-full h-full">
+                            <source src="assets/videos/texu-3w.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-6 text-center">
+                Xem video giới thiệu chi tiết về tính năng và ứng dụng của máy quét 3D TEXU 3W
+            </div>
+        </div>
+    </div>
+
+    <!-- Technical Specifications Table -->
+    <div class="py-24 dark:bg-gray-900 bg-background">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-6">THÔNG SỐ KỸ THUẬT</h2>
+                <p class="text-lg max-w-3xl mx-auto">
+                    Hiệu suất vượt trội, thông số kỹ thuật chi tiết của TEXU 3W
+                </p>
+            </div>
+
+            <div class="dark:bg-black/60 bg-background rounded-xl overflow-hidden shadow-xl border border-gray-800">
+                <div class="overflow-x-auto">
+                    <table class="w-full">
+                        <thead>
+                            <tr class="bg-blue-900/50">
+                                <th colspan="5" class="px-6 py-4 text-2xl font-bold text-center">
+                                    Thông Số TEXU 3W
+                                </th>
+                            </tr>
+                            <tr class="bg-blue-800/40">
+                                <th class="px-4 py-3 text-left"></th>
+                                <th colspan="2" class="px-4 py-3 text-center">Chế Độ Tiêu Chuẩn</th>
+                                <th colspan="2" class="px-4 py-3 text-center">Chế Độ Tinh Chỉnh</th>
+                            </tr>
+                            <tr class="bg-blue-800/40">
+                                <th class="px-4 py-3 text-left"></th>
+                                <th class="px-4 py-3 text-center">LOẠI S</th>
+                                <th class="px-4 py-3 text-center">LOẠI W</th>
+                                <th class="px-4 py-3 text-center">LOẠI S</th>
+                                <th class="px-4 py-3 text-center">LOẠI W</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b border-gray-800 bg-gray-900/30 hover:bg-gray-900/50">
+                                <td class="px-4 py-3 font-medium">Phạm Vi</td>
+                                <td class="px-4 py-3 text-center">2500mm</td>
+                                <td class="px-4 py-3 text-center">400mm</td>
+                                <td class="px-4 py-3 text-center">100mm</td>
+                                <td class="px-4 py-3 text-center">150mm</td>
+                            </tr>
+                            <tr class="border-b border-gray-800 bg-gray-900/20 hover:bg-gray-900/50">
+                                <td class="px-4 py-3 font-medium">Khoảng Cách Điểm</td>
+                                <td class="px-4 py-3 text-center">0.25mm</td>
+                                <td class="px-4 py-3 text-center">0.25mm</td>
+                                <td class="px-4 py-3 text-center">0.12mm</td>
+                                <td class="px-4 py-3 text-center">0.12mm</td>
+                            </tr>
+                            <tr class="border-b border-gray-800 bg-gray-900/30 hover:bg-gray-900/50">
+                                <td class="px-4 py-3 font-medium">Độ Chính Xác</td>
+                                <td class="px-4 py-3 text-center">0.1mm</td>
+                                <td class="px-4 py-3 text-center">0.15mm</td>
+                                <td class="px-4 py-3 text-center">0.04mm</td>
+                                <td class="px-4 py-3 text-center">0.05mm</td>
+                            </tr>
+                            <tr class="border-b border-gray-800 bg-gray-900/20 hover:bg-gray-900/50">
+                                <td class="px-4 py-3 font-medium">Phạm Vi Thích Ứng</td>
+                                <td colspan="2" class="px-4 py-3 text-center">400~1500mm</td>
+                                <td colspan="2" class="px-4 py-3 text-center">40~400mm</td>
+                            </tr>
+                            <tr class="border-b border-gray-800 bg-gray-900/30 hover:bg-gray-900/50">
+                                <td class="px-4 py-3 font-medium">Cảm Biến</td>
+                                <td colspan="4" class="px-4 py-3 text-center">ONSEMI 2800000 điểm ảnh 600fps</td>
+                            </tr>
+                            <tr class="border-b border-gray-800 bg-gray-900/20 hover:bg-gray-900/50">
+                                <td class="px-4 py-3 font-medium">Cách Tử Quang Học</td>
+                                <td colspan="4" class="px-4 py-3 text-center">TI 1280*1024 Đèn LED Ánh Sáng Trắng</td>
+                            </tr>
+                            <tr class="border-b border-gray-800 bg-gray-900/30 hover:bg-gray-900/50">
+                                <td class="px-4 py-3 font-medium">Quét Màu Đầy Đủ</td>
+                                <td colspan="4" class="px-4 py-3 text-center">Tùy chọn</td>
+                            </tr>
+                            <tr class="border-b border-gray-800 bg-gray-900/20 hover:bg-gray-900/50">
+                                <td class="px-4 py-3 font-medium">Camera</td>
+                                <td colspan="4" class="px-4 py-3 text-center">Ống kính đo quang học tiêu chuẩn 12mm nhập
+                                    khẩu</td>
+                            </tr>
+                            <tr class="border-b border-gray-800 bg-gray-900/30 hover:bg-gray-900/50">
+                                <td class="px-4 py-3 font-medium">USB</td>
+                                <td colspan="4" class="px-4 py-3 text-center">USB 3.0</td>
+                            </tr>
+                            <tr class="border-b border-gray-800 bg-gray-900/20 hover:bg-gray-900/50">
+                                <td class="px-4 py-3 font-medium">Điện Áp</td>
+                                <td colspan="4" class="px-4 py-3 text-center">19V 4.7A/100~240V 60HZ/1.5A</td>
+                            </tr>
+                            <tr class="border-b border-gray-800 bg-gray-900/30 hover:bg-gray-900/50">
+                                <td class="px-4 py-3 font-medium">Tốc Độ Quét</td>
+                                <td colspan="4" class="px-4 py-3 text-center">0.03s Quét bề mặt cấu trúc không tiếp xúc
+                                </td>
+                            </tr>
+                            <tr class="border-b border-gray-800 bg-gray-900/20 hover:bg-gray-900/50">
+                                <td class="px-4 py-3 font-medium">Quét Ngoài Trời</td>
+                                <td colspan="4" class="px-4 py-3 text-center">Cần thêm bóng râm để tránh nhiễu ánh sáng
+                                    chói</td>
+                            </tr>
+                            <tr class="border-b border-gray-800 bg-gray-900/30 hover:bg-gray-900/50">
+                                <td class="px-4 py-3 font-medium">Nguyên Lý Quét</td>
+                                <td colspan="4" class="px-4 py-3 text-center">Quét bề mặt cấu trúc không tiếp xúc</td>
+                            </tr>
+                            <tr class="border-b border-gray-800 bg-gray-900/20 hover:bg-gray-900/50">
+                                <td class="px-4 py-3 font-medium">Lưu Ý</td>
+                                <td colspan="4" class="px-4 py-3 text-center">Vật thể trong suốt, phản chiếu, vật đen
+                                    sáng không thể quét trực tiếp, cần dán hoặc xử lý bột</td>
+                            </tr>
+                            <tr class="border-b border-gray-800 bg-gray-900/30 hover:bg-gray-900/50">
+                                <td class="px-4 py-3 font-medium">Khoảng Cách Làm Việc</td>
+                                <td colspan="4" class="px-4 py-3 text-center">490mm</td>
+                            </tr>
+                            <tr class="border-b border-gray-800 bg-gray-900/20 hover:bg-gray-900/50">
+                                <td class="px-4 py-3 font-medium">Nhiệt Độ</td>
+                                <td colspan="4" class="px-4 py-3 text-center">0-40°C</td>
+                            </tr>
+                            <tr class="border-b border-gray-800 bg-gray-900/30 hover:bg-gray-900/50">
+                                <td class="px-4 py-3 font-medium">Trọng Lượng</td>
+                                <td colspan="4" class="px-4 py-3 text-center">0.9kg</td>
+                            </tr>
+                            <tr class="border-b border-gray-800 bg-gray-900/20 hover:bg-gray-900/50">
+                                <td class="px-4 py-3 font-medium">Kích Thước</td>
+                                <td colspan="4" class="px-4 py-3 text-center">240*165*55mm</td>
+                            </tr>
+                            <tr class="border-b border-gray-800 bg-gray-900/30 hover:bg-gray-900/50">
+                                <td class="px-4 py-3 font-medium">Ghép Nối</td>
+                                <td colspan="4" class="px-4 py-3 text-center">Ghép nối điểm đánh dấu/ghép nối đặc trưng
+                                </td>
+                            </tr>
+                            <tr class="border-b border-gray-800 bg-gray-900/20 hover:bg-gray-900/50">
+                                <td class="px-4 py-3 font-medium">Định Dạng Xuất</td>
+                                <td colspan="4" class="px-4 py-3 text-center">AC/ASC/OBJ/STL/PLY</td>
+                            </tr>
+                            <tr class="border-b border-gray-800 bg-gray-900/30 hover:bg-gray-900/50">
+                                <td class="px-4 py-3 font-medium">Hệ Thống</td>
+                                <td colspan="4" class="px-4 py-3 text-center">Win7sp1+ 64Bit/CPU I7 Bộ nhớ 8G Card đồ
+                                    họa Nvidia 2G SSD</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Product Section -->
+    <div class="py-24">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-6">VỀ TEXU 3W</h2>
+                <p class="text-lg max-w-3xl mx-auto">
+                    Thiết bị quét 3D chuyên nghiệp cho độ chính xác cao, phù hợp cho ngành kỹ thuật
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                <div>
+                    <p class="mb-6">
+                        TEXU 3W là máy quét 3D chuyên nghiệp được thiết kế đặc biệt cho các ứng dụng kỹ thuật với yêu
+                        cầu độ chính xác cao. Với khả năng quét chi tiết đến 0.04mm trong chế độ Fine, TEXU 3W mang đến
+                        giải pháp tối ưu cho ngành công nghiệp, thiết kế ngược và kiểm tra chất lượng.
+                    </p>
+                    <p class="mb-6">
+                        Sản phẩm này sử dụng công nghệ ánh sáng trắng có cấu trúc tiên tiến, cho phép quét nhanh chóng
+                        chỉ trong 0.03 giây mà không cần tiếp xúc với bề mặt. Điều này đảm bảo rằng các chi tiết phức
+                        tạp có thể được quét với độ chính xác tuyệt đối mà không gây hư hại.
+                    </p>
+                    <p class="mb-6">
+                        TEXU 3W hỗ trợ đa dạng định dạng xuất dữ liệu, bao gồm AC, ASC, OBJ, STL và PLY, cho phép tích
+                        hợp liền mạch với phần mềm CAD/CAM và các giải pháp in 3D. Đây là công cụ không thể thiếu cho
+                        các chuyên gia trong lĩnh vực kỹ thuật và sản xuất.
+                    </p>
+                </div>
+                <div>
+                    <img src="assets/images/texu-3w-1.png" alt="TEXU 3W Detail"
+                        class="w-full h-auto object-cover rounded-lg">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Slider -->
+    <div class="py-24 bg-background dark:bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-6">BỘ SƯU TẬP TEXU</h2>
+                <p class="text-lg max-w-3xl mx-auto">
+                    Khám phá dòng sản phẩm TEXU toàn diện
+                </p>
+            </div>
+
+            <div class="relative">
+                <!-- Slider Navigation -->
+                <button (click)="prevSlide()"
+                    class="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-black/50 rounded-full p-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                    </svg>
+                </button>
+
+                <button (click)="nextSlide()"
+                    class="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 bg-black/50 rounded-full p-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                </button>
+
+                <!-- Slider Content -->
+                <div class="overflow-hidden">
+                    <div class="flex transition-transform duration-500 ease-in-out"
+                        [style.transform]="'translateX(' + (-currentSlide * 100) + '%)'">
+                        <div *ngFor="let relatedProduct of relatedProducts" class="w-full flex-shrink-0 px-4">
+                            <div class="bg-black text-white p-6 rounded-2xl">
+                                <img [src]="relatedProduct.imageUrl" [alt]="relatedProduct.name"
+                                    class="w-full h-64 object-contain mb-6">
+                                <h3 class="text-2xl font-bold mb-2">{{relatedProduct.name}}</h3>
+                                <p class="mb-6">{{relatedProduct.description}}</p>
+                                <a [href]="relatedProduct.link"
+                                    class="text-blue-400 flex items-center hover:text-blue-300">
+                                    Tìm hiểu thêm
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slider Pagination -->
+                <div class="flex justify-center mt-8 space-x-2">
+                    <div *ngFor="let relatedProduct of relatedProducts; let i = index" (click)="goToSlide(i)"
+                        class="w-16 h-1 cursor-pointer transition-all duration-300"
+                        [ngClass]="i === currentSlide ? 'bg-blue-600' : 'bg-gray-600'">
+                    </div>
+                </div>
+            </div>
+        </div>

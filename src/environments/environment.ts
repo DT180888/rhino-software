@@ -6,7 +6,6 @@ export const environment = {
   production: false,
   BACKEND_API_URL: 'https://localhost:7016',
   signalRHubUrl: 'https://localhost:7016',
-  googleClientId: '119666625549-3f1lkg3r94o78u8fmmllfg92godhrs5t.apps.googleusercontent.com',
 };
 
 /*

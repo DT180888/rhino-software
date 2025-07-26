@@ -1,0 +1,28 @@
+.manufacturing::after {
+    content: "";
+    display: block;
+    background-image: url(/assets/images/bg-voxeldance-manufacturing.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    top: -150px;
+    right: -68px;
+    width: 320px;
+    height: 572px;
+    z-index: 10;
+}
+
+@media screen and (max-width: 1200px) {
+    .manufacturing::after {
+        top: -107px;
+        right: -49px;
+        width: 230px;
+        height: 572px;
+    }
+}
+
+@media screen and (max-width: 1069px) {
+    .manufacturing::after {
+        display: none;
+    }
+}
