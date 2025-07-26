@@ -1,0 +1,317 @@
+<!-- MAIN CONTAINER -->
+<div class="min-h-screen w-full bg-background text-foreground">
+
+    <!-- Hero Section -->
+    <div class="w-full pt-32 pb-16">
+      <div class="max-w-7xl mx-auto px-4">
+        <!-- Tiêu đề và mô tả chính -->
+        <div class="flex flex-col items-center text-center mb-12">
+          <h1 class="text-3xl md:text-6xl font-extrabold mb-6 tracking-tight">
+            {{ product.name }}
+          </h1>
+          <p class="text-xl max-w-2xl">
+            Máy quét 3D LED flash chuyên nghiệp, linh hoạt nhiều phạm vi quét.
+          </p>
+        </div>
+  
+        <!-- Ảnh sản phẩm chính -->
+        <div class="flex justify-center">
+          <div class="relative w-full max-w-xl">
+            <div class="absolute inset-0 bg-blue-500 rounded-full filter blur-3xl opacity-20 animate-pulse">
+            </div>
+            <img
+              [src]="product.imageUrl"
+              [alt]="product.name"
+              class="relative z-10 mx-auto w-full object-contain"
+            >
+          </div>
+        </div>
+  
+        <!-- Nút hành động -->
+        <div class="mt-12 text-center max-w-2xl mx-auto">
+          <p class="text-lg mb-8">
+            {{ product.tagline }}
+          </p>
+          <div class="flex flex-wrap justify-center gap-4">
+            <button class="px-8 py-3 bg-primary rounded-full hover:bg-primary/70 transition-colors">
+              MUA NGAY
+            </button>
+            <button
+              class="px-8 py-3 border border-black/50 dark:border-white rounded-full hover:bg-white hover:text-black transition-colors">
+              TÌM HIỂU THÊM
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Video Section -->
+    <div class="py-16 bg-background dark:bg-gray-900">
+        <div class="max-w-5xl mx-auto px-4">
+
+            <!-- Tiêu đề -->
+            <h2 class="text-3xl font-bold mb-8 text-center">KHÁM PHÁ {{ product.name }}</h2>
+            <div class="aspect-w-16 aspect-h-9 rounded-xl overflow-hidden shadow-2xl border border-gray-800">
+                <div class="w-full h-full bg-gray-800 flex items-center justify-center">
+                    <div class="relative w-full h-full">
+                        <video controls class="w-full h-full">
+                            <source src="assets/videos/texu630w.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+            </div>
+            <!-- Chú thích -->
+            <div class="mt-6 text-center">
+                Xem video giới thiệu chi tiết về tính năng và ứng dụng của máy quét 3D {{ product.name }}
+            </div>
+        </div>
+    </div>
+
+    <!-- Technical Specifications Table -->
+    <div class="py-24 dark:bg-gray-900 bg-background">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-bold mb-6">THÔNG SỐ KỸ THUẬT</h2>
+          <p class="text-lg max-w-3xl mx-auto">
+            Thông số chi tiết cho các tùy chọn (Song Mục / Tứ Mục) của {{ product.name }}
+          </p>
+        </div>
+  
+        <div class="dark:bg-black/60 bg-background rounded-xl overflow-hidden shadow-xl border border-gray-800">
+          <div class="overflow-x-auto">
+            <!-- Bảng cho "TEXU 630W (Song Mục)" -->
+            <table class="w-full mb-8">
+              <thead>
+                <tr class="bg-blue-900/50">
+                  <th colspan="5" class="px-6 py-4 text-2xl font-bold text-center">
+                    TEXU 630W (Song Mục)
+                  </th>
+                </tr>
+                <tr class="bg-blue-800/40">
+                  <th class="px-4 py-3 text-left">Model</th>
+                  <th class="px-4 py-3 text-center">630W-400</th>
+                  <th class="px-4 py-3 text-center">630W-300</th>
+                  <th class="px-4 py-3 text-center">630W-200</th>
+                  <th class="px-4 py-3 text-center">630W-100</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="border-b border-gray-800 bg-gray-900/30 hover:bg-gray-900/50">
+                  <td class="px-4 py-3 font-medium">Phạm Vi Quét (mm)</td>
+                  <td class="px-4 py-3 text-center">400*300</td>
+                  <td class="px-4 py-3 text-center">300*250</td>
+                  <td class="px-4 py-3 text-center">200*150</td>
+                  <td class="px-4 py-3 text-center">100*70</td>
+                </tr>
+                <tr class="border-b border-gray-800 bg-gray-900/20 hover:bg-gray-900/50">
+                  <td class="px-4 py-3 font-medium">Độ Chính Xác (mm)</td>
+                  <td class="px-4 py-3 text-center">0.01</td>
+                  <td class="px-4 py-3 text-center">0.01</td>
+                  <td class="px-4 py-3 text-center">0.008</td>
+                  <td class="px-4 py-3 text-center">0.006</td>
+                </tr>
+                <tr class="border-b border-gray-800 bg-gray-900/30 hover:bg-gray-900/50">
+                  <td class="px-4 py-3 font-medium">Khoảng Cách Điểm (mm)</td>
+                  <td class="px-4 py-3 text-center">0.15</td>
+                  <td class="px-4 py-3 text-center">0.1</td>
+                  <td class="px-4 py-3 text-center">0.06</td>
+                  <td class="px-4 py-3 text-center">0.02</td>
+                </tr>
+                <tr class="border-b border-gray-800 bg-gray-900/20 hover:bg-gray-900/50">
+                  <td class="px-4 py-3 font-medium">Model Bổ Sung</td>
+                  <td colspan="4" class="px-4 py-3 text-center">630W-50 (50*35mm, Độ chính xác 0.003mm, Khoảng cách điểm 0.01mm)</td>
+                </tr>
+                <tr class="border-b border-gray-800 bg-gray-900/30 hover:bg-gray-900/50">
+                  <td class="px-4 py-3 font-medium">Camera</td>
+                  <td colspan="4" class="px-4 py-3 text-center">6.3MP x 2</td>
+                </tr>
+              </tbody>
+            </table>
+  
+            <!-- Bảng cho "TEXU 630W (Tứ Mục)" -->
+            <table class="w-full">
+              <thead>
+                <tr class="bg-blue-900/50">
+                  <th colspan="5" class="px-6 py-4 text-2xl font-bold text-center">
+                    TEXU 630W (Tứ Mục)
+                  </th>
+                </tr>
+                <tr class="bg-blue-800/40">
+                  <th class="px-4 py-3 text-left">Model</th>
+                  <th class="px-4 py-3 text-center">630W-400</th>
+                  <th class="px-4 py-3 text-center">630W-300</th>
+                  <th class="px-4 py-3 text-center">630W-200</th>
+                  <th class="px-4 py-3 text-center">630W-100</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="border-b border-gray-800 bg-gray-900/30 hover:bg-gray-900/50">
+                  <td class="px-4 py-3 font-medium">Phạm Vi Quét (mm)</td>
+                  <td class="px-4 py-3 text-center">400*300 / 50*35</td>
+                  <td class="px-4 py-3 text-center">300*250 / 50*35</td>
+                  <td class="px-4 py-3 text-center">200*150 / 50*35</td>
+                  <td class="px-4 py-3 text-center">400*300 / 100*70</td>
+                </tr>
+                <tr class="border-b border-gray-800 bg-gray-900/20 hover:bg-gray-900/50">
+                  <td class="px-4 py-3 font-medium">Độ Chính Xác (mm)</td>
+                  <td class="px-4 py-3 text-center">0.01 / 0.003</td>
+                  <td class="px-4 py-3 text-center">0.01 / 0.003</td>
+                  <td class="px-4 py-3 text-center">0.008 / 0.003</td>
+                  <td class="px-4 py-3 text-center">0.01 / 0.003</td>
+                </tr>
+                <tr class="border-b border-gray-800 bg-gray-900/30 hover:bg-gray-900/50">
+                  <td class="px-4 py-3 font-medium">Khoảng Cách Điểm (mm)</td>
+                  <td class="px-4 py-3 text-center">0.15 / 0.015</td>
+                  <td class="px-4 py-3 text-center">0.1 / 0.01</td>
+                  <td class="px-4 py-3 text-center">0.06 / 0.01</td>
+                  <td class="px-4 py-3 text-center">0.15 / 0.02</td>
+                </tr>
+                <tr class="border-b border-gray-800 bg-gray-900/20 hover:bg-gray-900/50">
+                  <td class="px-4 py-3 font-medium">Model Bổ Sung</td>
+                  <td colspan="4" class="px-4 py-3 text-center">
+                    630W-50 (300*250/100*70, Độ chính xác 0.01/0.003, Khoảng cách điểm 0.1/0.015)
+                  </td>
+                </tr>
+                <tr class="border-b border-gray-800 bg-gray-900/30 hover:bg-gray-900/50">
+                  <td class="px-4 py-3 font-medium">Camera</td>
+                  <td colspan="4" class="px-4 py-3 text-center">6.3MP x 4</td>
+                </tr>
+              </tbody>
+            </table>
+  
+            <!-- Thông tin tổng quát thêm bên dưới hai bảng -->
+            <div class="p-4 text-sm text-foreground">
+              <p class="mt-4">
+                <strong>Phương thức quét:</strong> Không tiếp xúc (công nghệ ánh sáng LED flash).
+              </p>
+              <p>
+                <strong>Tốc độ quét:</strong> &lt; 2s.
+              </p>
+              <p>
+                <strong>Phương thức ghép (Align):</strong> Theo đặc trưng hình học, đánh dấu điểm (targets), hoặc xoay trên bàn xoay tự động.
+              </p>
+              <p>
+                <strong>Định dạng xuất:</strong> .asc, .stl, .obj, ... Tương thích với UG, Pro-E, CATIA, Geomagic, Imageware...
+              </p>
+              <p>
+                <strong>Cấu hình máy tính khuyến nghị:</strong> CPU Intel Core i7 (thế hệ 7 trở lên), RAM 16GB DDR3 1600+, 
+                GPU NVIDIA Quadro chuyên nghiệp (2GB VRAM+), HDD 1TB+.
+              </p>
+            </div>
+  
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- About Product Section -->
+    <div class="py-24">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-bold mb-6">VỀ {{ product.name }}</h2>
+          <p class="text-lg max-w-3xl mx-auto">
+            {{ product.description }}
+          </p>
+        </div>
+  
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+          <div>
+            <p class="mb-6">
+              TEXU 630W được chia thành hai dòng chính: Song Mục (2 camera) và Tứ Mục (4 camera),
+              cho phép thay đổi phạm vi quét linh hoạt từ 50mm đến 400mm.
+            </p>
+            <p class="mb-6">
+              Hệ thống sử dụng **LED flash** để quét, đảm bảo an toàn và tốc độ scan nhanh (chưa đến 2 giây). 
+              Máy hỗ trợ nhiều cách ghép nối dữ liệu (align) như đặc trưng hình học hoặc bàn xoay điện động. 
+            </p>
+            <p class="mb-6">
+              Sản phẩm phù hợp cho nhiều ngành: công nghiệp, kiểm tra chất lượng, giáo dục, bảo tồn bảo tàng, 
+              nghiên cứu khoa học, gia công ngược, v.v...
+            </p>
+          </div>
+          <div>
+            <img src="assets/images/texu-630w-detail.png"
+                 alt="TEXU 630W Detail"
+                 class="w-full h-auto object-cover rounded-lg">
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Product Slider -->
+    <div class="py-24 bg-background dark:bg-gray-900">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-bold mb-6">BỘ SƯU TẬP TEXU</h2>
+          <p class="text-lg max-w-3xl mx-auto">
+            Khám phá các dòng sản phẩm TEXU toàn diện
+          </p>
+        </div>
+  
+        <div class="relative">
+          <!-- Slider Navigation -->
+          <button (click)="prevSlide()"
+                  class="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-black/50 rounded-full p-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white"
+                 fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M15 19l-7-7 7-7"/>
+            </svg>
+          </button>
+  
+          <button (click)="nextSlide()"
+                  class="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 bg-black/50 rounded-full p-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white"
+                 fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 5l7 7-7 7"/>
+            </svg>
+          </button>
+  
+          <!-- Slider Content -->
+          <div class="overflow-hidden">
+            <div class="flex transition-transform duration-500 ease-in-out"
+                 [style.transform]="'translateX(' + (-currentSlide * 100) + '%)'">
+              <div *ngFor="let relatedProduct of relatedProducts"
+                   class="w-full flex-shrink-0 px-4">
+                <div class="bg-black text-white p-6 rounded-2xl">
+                  <img [src]="relatedProduct.imageUrl"
+                       [alt]="relatedProduct.name"
+                       class="w-full h-64 object-contain mb-6">
+                  <h3 class="text-2xl font-bold mb-2">{{ relatedProduct.name }}</h3>
+                  <p class="mb-6">{{ relatedProduct.description }}</p>
+                  <a [href]="relatedProduct.link"
+                     class="text-blue-400 flex items-center hover:text-blue-300">
+                    Tìm hiểu thêm
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2"
+                         fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+  
+          <!-- Slider Pagination -->
+          <div class="flex justify-center mt-8 space-x-2">
+            <div *ngFor="let relatedProduct of relatedProducts; let i = index"
+                 (click)="goToSlide(i)"
+                 class="w-16 h-1 cursor-pointer transition-all duration-300"
+                 [ngClass]="i === currentSlide ? 'bg-blue-600' : 'bg-gray-600'">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  </div>
+  

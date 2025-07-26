@@ -118,11 +118,11 @@ export class HomeHeaderComponent implements OnInit {
         { label: 'Rhino', path: '/landing/rhino', active: false, submenuChild: [], children: [] },
         { label: 'Orang-Rhino', path: '/landing/orange-rhino', active: false, submenuChild: [], children: [] },
         { label: 'RhinoCAM', path: 'https://mecsoft.com/products/rhinocam/', active: false, submenuChild: [], children: [] },
-        { label: 'VoxelDance', path: '/landing/voxel-dance', active: false, 
-          submenuChild: [
-            { label: 'VoxelDance Manufacturing', path: '/landing/voxel-dance', active: false, submenuChild: [], children: [],  fragment: 'Manufacturing'  },
-            { label: 'VoxelDance Engineering', path: '/landing/voxel-dance', active: false, submenuChild: [], children: [] , fragment: 'Engineering'}
-          ],
+        { label: 'VoxelDance Additive', path: '/landing/voxel-dance', active: false, 
+          // submenuChild: [
+          //   { label: 'VoxelDance Manufacturing', path: '/landing/voxel-dance', active: false, submenuChild: [], children: [],  fragment: 'Manufacturing'  },
+          //   { label: 'VoxelDance Engineering', path: '/landing/voxel-dance', active: false, submenuChild: [], children: [] , fragment: 'Engineering'}
+          // ],
           children: []
         }
       ],
